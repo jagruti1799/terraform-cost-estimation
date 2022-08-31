@@ -54,10 +54,6 @@ resource "azurerm_virtual_machine" "vm" {
     command = "chmod 600 webkey.pem"
   }
    
-  provisioner "file" {
-    source      = "/home/einfochips/Desktop/Jenkins/Terraform/tomcat.sh"
-    destination = "/home/adminuser/tomcat.sh"
-  }
  
   provisioner "remote-exec" {
     inline = [
