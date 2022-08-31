@@ -58,8 +58,6 @@ resource "azurerm_virtual_machine" "vm" {
   provisioner "remote-exec" {
     inline = [
       "ls -a",
-      "sudo chmod +x tomcat.sh",
-      "sudo sh tomcat.sh",
     ]
   }
 }
