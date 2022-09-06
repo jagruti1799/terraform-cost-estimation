@@ -54,10 +54,4 @@ resource "azurerm_virtual_machine" "vm" {
     command = "chmod 600 webkey.pem"
   }
    
- 
-  provisioner "remote-exec" {
-    inline = [
-      "ls -a",
-    ]
-  }
 }
