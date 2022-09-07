@@ -1,1 +1,1 @@
-print("hello")
+print("hello from terraform git repository)
