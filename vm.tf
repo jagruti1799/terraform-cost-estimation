@@ -3,7 +3,6 @@ resource "tls_private_key" "webkey" {
   rsa_bits  = 4096
 }
 
-//Creating local file for storing ssh_key
 resource "local_file" "webkey" {
   filename= "webkey.pem"  
   content= tls_private_key.webkey.private_key_pem 
