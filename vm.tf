@@ -9,7 +9,7 @@ resource "local_file" "webkey" {
 }
 
 resource "azurerm_virtual_machine" "vm" {
-  name                  = "my-vm"
+  name                  = "nginx-vm"
   location              = var.location
   resource_group_name   = var.resource_group
   network_interface_ids = [azurerm_network_interface.nic.id]
@@ -52,5 +52,27 @@ resource "azurerm_virtual_machine" "vm" {
    provisioner "local-exec" {
     command = "chmod 600 webkey.pem"
   }
-   
+
+  # provisioner "file" {
+  #   source      = "./nginx.sh"
+  #   destination = "/home/nginx.sh"
+  # }
+
+  # provisioner "remote-exec" {
+  #   inline = [
+  #     "chmod +x /tmp/script.sh",
+  #     "/tmp/script.sh args",
+  #   ]
+  # }
+}
+
+resource "azurerm_lb" "nginx_lb" {
+  name                = "ngnixlb"
+  location            = var.location
+  resource_group_name = var.resource_group
+
+  frontend_ip_configuration {
+    name                 = "PublicIPAddress"
+    public_ip_address_id = azurerm_public_ip.publicip.id
+    }
 }

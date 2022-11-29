@@ -3,7 +3,7 @@ variable "location" {
 }
 
 variable "resource_group" {
-  default = "demogroup"
+  default = "EIC-DevOps-RG"
 }
 
 variable "vnet" {
