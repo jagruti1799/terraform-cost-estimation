@@ -5,3 +5,7 @@ output "public_ip_address" {
 output "vm_name" {
   value = azurerm_virtual_machine.vm.*.name
 }
+
+output "ngnix_lb_id" {
+  value = azurerm_lb.nginx_lb.id
+}
