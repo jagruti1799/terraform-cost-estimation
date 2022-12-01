@@ -1,12 +1,7 @@
-resource "azurerm_resource_group" "rg" {
-  name     = var.resource_group
-  location = var.location
-}
-
 resource "azurerm_network_security_group" "nginxnsg" {
   name                = "nginx-nsg"
   location            = var.location
-  resource_group_name = azurerm_resource_group.rg.name
+  resource_group_name = "sa1_dev_eic_dovercorp_devops_poc"
 
   security_rule {
     name                       = "AllowSSH"
@@ -29,6 +24,13 @@ resource "azurerm_network_security_group" "nginxnsg" {
     destination_port_range     = "80"
     source_address_prefix      = "*"
     destination_address_prefix = "*"
+  }
+    tags = {
+    Resource_Owner= "Alpesh Bhavsar"
+    Delivery_Manager = "Yash Badiani"
+    Business_Unit = "PES"
+    Project_name = "DoverPoC"
+    Create_Date = "01/12/22"
   }
 }
 

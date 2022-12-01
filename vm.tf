@@ -52,26 +52,28 @@ resource "azurerm_virtual_machine" "vm" {
    provisioner "local-exec" {
     command = "chmod 600 webkey.pem"
   }
-
-  # provisioner "file" {
-  #   source      = "./nginx.sh"
-  #   destination = "/home/nginx.sh"
-  # }
-
-  # provisioner "remote-exec" {
-  #   inline = [
-  #     "chmod +x /tmp/script.sh",
-  #     "/tmp/script.sh args",
-  #   ]
-  # }
+  tags = {
+    Resource_Owner= "Alpesh Bhavsar"
+    Delivery_Manager = "Yash Badiani"
+    Business_Unit = "PES"
+    Project_name = "DoverPoC"
+    Create_Date = "01/12/22"
+  }
 }
 
 resource "azurerm_public_ip" "lbpublicip" {
   name                = "lbpublicip"
   location            = var.location
-  resource_group_name = var.resource_group
+  resource_group_name = "sa1_dev_eic_dovercorp_devops_poc"
   allocation_method   = "Static"
-  depends_on          = [azurerm_resource_group.rg]
+  
+  tags = {
+    Resource_Owner= "Alpesh Bhavsar"
+    Delivery_Manager = "Yash Badiani"
+    Business_Unit = "PES"
+    Project_name = "DoverPoC"
+    Create_Date = "01/12/22"
+  }
 }
 
 resource "azurerm_lb" "nginx_lb" {
@@ -83,4 +85,11 @@ resource "azurerm_lb" "nginx_lb" {
     name                 = "PublicIPAddress"
     public_ip_address_id = azurerm_public_ip.lbpublicip.id
     }
+  tags = {
+    Resource_Owner= "Alpesh Bhavsar"
+    Delivery_Manager = "Yash Badiani"
+    Business_Unit = "PES"
+    Project_name = "DoverPoC"
+    Create_Date = "01/12/22"
+  }
 }
