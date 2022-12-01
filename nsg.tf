@@ -1,7 +1,12 @@
+resource "azurerm_resource_group" "rg" {
+  name     = var.resource_group
+  location = var.location
+}
+
 resource "azurerm_network_security_group" "nginxnsg" {
-  name                = "nginxnsg"
+  name                = "nginx-nsg"
   location            = var.location
-  resource_group_name = var.resource_group
+  resource_group_name = azurerm_resource_group.rg.name
 
   security_rule {
     name                       = "AllowSSH"

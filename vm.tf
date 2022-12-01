@@ -66,6 +66,14 @@ resource "azurerm_virtual_machine" "vm" {
   # }
 }
 
+resource "azurerm_public_ip" "lbpublicip" {
+  name                = "lbpublicip"
+  location            = var.location
+  resource_group_name = var.resource_group
+  allocation_method   = "Static"
+  depends_on          = [azurerm_resource_group.rg]
+}
+
 resource "azurerm_lb" "nginx_lb" {
   name                = "ngnixlb"
   location            = var.location
@@ -73,6 +81,6 @@ resource "azurerm_lb" "nginx_lb" {
 
   frontend_ip_configuration {
     name                 = "PublicIPAddress"
-    public_ip_address_id = azurerm_public_ip.publicip.id
+    public_ip_address_id = azurerm_public_ip.lbpublicip.id
     }
 }

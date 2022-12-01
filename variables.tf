@@ -3,7 +3,7 @@ variable "location" {
 }
 
 variable "resource_group" {
-  default = "EIC-DevOps-RG"
+  default = "myazrg-terraform-cost"
 }
 
 variable "vnet" {
