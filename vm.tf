@@ -11,7 +11,7 @@ resource "local_file" "webkey" {
 resource "azurerm_virtual_machine" "vm" {
   name                  = "nginx-vm"
   location              = var.location
-  resource_group_name   = var.resource_group
+  resource_group_name = "sa1_dev_eic_dovercorp_devops_poc"
   network_interface_ids = [azurerm_network_interface.nic.id]
   vm_size               = "Standard_B1s"
 
@@ -77,9 +77,9 @@ resource "azurerm_public_ip" "lbpublicip" {
 }
 
 resource "azurerm_lb" "nginx_lb" {
-  name                = "ngnixlb"
+  name                = "ngnix_lb"
   location            = var.location
-  resource_group_name = var.resource_group
+  resource_group_name = "sa1_dev_eic_dovercorp_devops_poc"
 
   frontend_ip_configuration {
     name                 = "PublicIPAddress"

@@ -15,7 +15,7 @@ resource "azurerm_virtual_network" "vnet" {
 resource "azurerm_public_ip" "publicip" {
   name                = "publicip"
   location            = var.location
-  resource_group_name = var.resource_group
+  resource_group_name = "sa1_dev_eic_dovercorp_devops_poc"
   allocation_method   = "Static"
 
 }
