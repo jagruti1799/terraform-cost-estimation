@@ -1,3 +1,7 @@
+data "http" "myip" {
+  url = "http://ipv4.icanhazip.com"
+}
+
 resource "azurerm_network_security_group" "nginxnsg" {
   name                = "nginx-nsg"
   location            = var.location
@@ -9,7 +13,7 @@ resource "azurerm_network_security_group" "nginxnsg" {
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "Tcp"
-    source_port_range          = "*"
+    source_port_range          = "${chomp(data.http.myip.body)}/32"
     destination_port_range     = "22"
     source_address_prefix      = "*"
     destination_address_prefix = "*"
@@ -20,11 +24,12 @@ resource "azurerm_network_security_group" "nginxnsg" {
     direction                  = "Outbound"
     access                     = "Allow"
     protocol                   = "Tcp"
-    source_port_range          = "*"
+    source_port_range          = "${chomp(data.http.myip.body)}/32"
     destination_port_range     = "80"
     source_address_prefix      = "*"
     destination_address_prefix = "*"
   }
+  
     tags = {
     Resource_Owner= "Alpesh Bhavsar"
     Delivery_Manager = "Yash Badiani"
