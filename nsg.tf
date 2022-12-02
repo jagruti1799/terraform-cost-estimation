@@ -1,7 +1,3 @@
-data "http" "myip" {
-  url = "http://ipv4.icanhazip.com"
-}
-
 resource "azurerm_network_security_group" "nginxnsg" {
   name                = "nginx-nsg"
   location            = var.location
