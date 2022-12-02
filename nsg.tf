@@ -13,7 +13,7 @@ resource "azurerm_network_security_group" "nginxnsg" {
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "Tcp"
-    source_port_range          = {chomp(data.http.myip.body)}/32
+    source_port_range          = "42.106.205.56"
     destination_port_range     = "22"
     source_address_prefix      = "*"
     destination_address_prefix = "*"
@@ -24,7 +24,7 @@ resource "azurerm_network_security_group" "nginxnsg" {
     direction                  = "Outbound"
     access                     = "Allow"
     protocol                   = "Tcp"
-    source_port_range          = {chomp(data.http.myip.body)}/32
+    source_port_range          = "42.106.205.56"
     destination_port_range     = "80"
     source_address_prefix      = "*"
     destination_address_prefix = "*"
