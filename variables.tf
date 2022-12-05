@@ -1,5 +1,5 @@
 variable "location" {
-  default = "West Europe"
+  default = "Southeast Asia"
 }
 
 variable "resource_group" {
