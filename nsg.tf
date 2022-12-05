@@ -26,12 +26,12 @@ resource "azurerm_network_security_group" "nginxnsg" {
     destination_address_prefix = "*"
   }
   
-    tags = {
-    Resource_Owner= "Alpesh Bhavsar"
-    Delivery_Manager = "Yash Badiani"
-    Business_Unit = "PES"
-    Project_name = "DoverPoC"
-    Create_Date = "01/12/22"
+  tags = {
+    "Resource Owner" = "Alpesh Bhavsar"
+    "Delivery Manager" = "Yash Badiani"
+    "Business Unit" = "PES"
+    "Project name" = "DoverPoC"
+    "Create Date" = "01/12/22"
   }
 }
 

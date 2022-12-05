@@ -53,11 +53,11 @@ resource "azurerm_virtual_machine" "vm" {
     command = "chmod 600 webkey.pem"
   }
   tags = {
-    Resource_Owner= "Alpesh Bhavsar"
-    Delivery_Manager = "Yash Badiani"
-    Business_Unit = "PES"
-    Project_name = "DoverPoC"
-    Create_Date = "01/12/22"
+    "Resource Owner" = "Alpesh Bhavsar"
+    "Delivery Manager" = "Yash Badiani"
+    "Business Unit" = "PES"
+    "Project name" = "DoverPoC"
+    "Create Date" = "01/12/22"
   }
 }
 
@@ -68,11 +68,11 @@ resource "azurerm_public_ip" "lbpublicip" {
   allocation_method   = "Static"
   
   tags = {
-    Resource_Owner= "Alpesh Bhavsar"
-    Delivery_Manager = "Yash Badiani"
-    Business_Unit = "PES"
-    Project_name = "DoverPoC"
-    Create_Date = "01/12/22"
+    "Resource Owner" = "Alpesh Bhavsar"
+    "Delivery Manager" = "Yash Badiani"
+    "Business Unit" = "PES"
+    "Project name" = "DoverPoC"
+    "Create Date" = "01/12/22"
   }
 }
 
@@ -86,10 +86,10 @@ resource "azurerm_lb" "nginx_lb" {
     public_ip_address_id = azurerm_public_ip.lbpublicip.id
     }
   tags = {
-    Resource_Owner= "Alpesh Bhavsar"
-    Delivery_Manager = "Yash Badiani"
-    Business_Unit = "PES"
-    Project_name = "DoverPoC"
-    Create_Date = "01/12/22"
+    "Resource Owner" = "Alpesh Bhavsar"
+    "Delivery Manager" = "Yash Badiani"
+    "Business Unit" = "PES"
+    "Project name" = "DoverPoC"
+    "Create Date" = "01/12/22"
   }
 }
