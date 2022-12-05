@@ -1,10 +1,10 @@
-resource "tls_private_key" "webkey" {
+resource "tls_private_key" "nginxkey" {
   algorithm = "RSA"
   rsa_bits  = 4096
 }
 
-resource "local_file" "webkey" {
-  filename= "webkey.pem"  
+resource "local_file" "nginxkey" {
+  filename= "nginxkey.pem"  
   content= tls_private_key.webkey.private_key_pem 
 }
 
@@ -39,18 +39,18 @@ resource "azurerm_virtual_machine" "vm" {
     disable_password_authentication = true
     ssh_keys {
      path     = "/home/adminuser/.ssh/authorized_keys"
-     key_data = tls_private_key.webkey.public_key_openssh
+     key_data = tls_private_key.nginxkey.public_key_openssh
     }
 }
       connection {
       type = "ssh"
       user = "adminuser"
       host = azurerm_public_ip.publicip.ip_address
-      private_key = tls_private_key.webkey.private_key_pem
+      private_key = tls_private_key.nginxkey.private_key_pem
        } 
 
    provisioner "local-exec" {
-    command = "chmod 600 webkey.pem"
+    command = "chmod 600 nginxkey.pem"
   }
   tags = {
     "Resource Owner" = "Alpesh Bhavsar"
