@@ -18,6 +18,14 @@ resource "azurerm_public_ip" "publicip" {
   resource_group_name = "sa1_dev_eic_dovercorp_devops_poc"
   allocation_method   = "Static"
 
+    tags = {
+    "Resource Owner" = "Alpesh Bhavsar"
+    "Delivery Manager" = "Yash Badiani"
+    "Business Unit" = "PES"
+    "Project name" = "DoverPoC"
+    "Create Date" = "01/12/22"
+  }
+
 }
 
 resource "azurerm_subnet" "subnet" {
