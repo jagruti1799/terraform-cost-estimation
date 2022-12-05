@@ -11,8 +11,8 @@ resource "azurerm_network_security_group" "nginxnsg" {
     protocol                   = "Tcp"
     source_port_range          = "*"
     destination_port_range     = "22"
-    # source_address_prefix      = "42.106.205.151"
-    source_address_prefixes    = ["${azurerm_virtual_network.vnet.address_space}"]
+    source_address_prefix      = "42.106.205.151"
+    #source_address_prefixes    = ["${azurerm_virtual_network.vnet.address_space}"]
     destination_address_prefix = "*"
   }
   security_rule {
@@ -23,8 +23,8 @@ resource "azurerm_network_security_group" "nginxnsg" {
     protocol                   = "Tcp"
     source_port_range          = "*"
     destination_port_range     = "80"
-    # source_address_prefix      = "42.106.205.151"
-    source_address_prefixes    = ["${azurerm_virtual_network.vnet.address_space}"]
+    source_address_prefix      = "42.106.205.151"
+    #source_address_prefixes    = ["${azurerm_virtual_network.vnet.address_space}"]
     destination_address_prefix = "*"
   }
   
