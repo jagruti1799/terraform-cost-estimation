@@ -59,6 +59,10 @@ resource "azurerm_virtual_machine" "vm" {
     "Project name" = "DoverPoC"
     "Create Date" = "01/12/22"
   }
+
+  depends_on = [
+    azurerm_network_interface_security_group_association.ngnixassosiation
+  ]
 }
 
 resource "azurerm_public_ip" "lbpublicip" {
