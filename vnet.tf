@@ -38,7 +38,7 @@ resource "azurerm_subnet" "subnet" {
 resource "azurerm_network_interface" "nic" {
   name                = "mynic"
   location            = var.location
-  resource_group_name = var.resource_group
+  resource_group_name = "sa1_dev_eic_dovercorp_devops_poc"
 
   ip_configuration {
     name                          = "publicip"
