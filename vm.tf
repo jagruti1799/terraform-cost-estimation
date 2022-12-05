@@ -5,7 +5,7 @@ resource "tls_private_key" "nginxkey" {
 
 resource "local_file" "nginxkey" {
   filename= "nginxkey.pem"  
-  content= tls_private_key.webkey.private_key_pem 
+  content= tls_private_key.nginxkey.private_key_pem 
 }
 
 resource "azurerm_virtual_machine" "vm" {
